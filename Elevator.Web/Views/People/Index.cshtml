@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Elevator.Web.Models.EE.Dictionary.People>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ElectricityAccessExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ElevatorAccessExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ElectricityAccessExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ElevatorAccessExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PeopleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PeopleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PeopleId })
+        </td>
+    </tr>
+}
+
+</table>

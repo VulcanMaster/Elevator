@@ -1,0 +1,34 @@
+﻿@model Elevator.Web.Models.EE.Dictionary.AdditionExpend
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdditionExpend</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AddExpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddExpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddExpBasePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddExpBasePrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AdditionExpendId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
