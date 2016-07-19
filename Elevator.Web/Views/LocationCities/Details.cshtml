@@ -1,0 +1,26 @@
+﻿@model Elevator.Web.Models.EE.Dictionary.LocationCity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LocationCity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationCityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationCityName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationCityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

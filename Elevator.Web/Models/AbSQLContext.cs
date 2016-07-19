@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Elevator.Web.Models.EE.Dictionary;
+using Elevator.Web.Models.EE.Operational;
 
 namespace Elevator.Web.Models
 {
@@ -23,5 +24,7 @@ namespace Elevator.Web.Models
         public virtual DbSet<MechanicArea> MechanicArea { get; set; }
         public virtual DbSet<MechanicStatus> MechanicStatus { get; set; }
         public virtual DbSet<Metric> Metric { get; set; }
+        public virtual DbSet<Elevators> Elevator { get; set; }
+        public virtual DbSet<ServiceBoard> ServiceBoard { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model Elevator.Web.Models.EE.Dictionary.ElevatorCapacity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ElevatorCapacity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ElevatorCapacityValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ElevatorCapacityValue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ElevatorCapacityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

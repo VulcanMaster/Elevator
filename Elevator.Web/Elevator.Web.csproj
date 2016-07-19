@@ -168,11 +168,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdditionExpendsController.cs" />
+    <Compile Include="Controllers\ClientsBanksController.cs" />
+    <Compile Include="Controllers\ElevatorCapacitiesController.cs" />
+    <Compile Include="Controllers\ElevatorControllersController.cs" />
+    <Compile Include="Controllers\ElevatorDrivePowersController.cs" />
+    <Compile Include="Controllers\ElevatorDriveTypesController.cs" />
+    <Compile Include="Controllers\ElevatorNowStatusController.cs" />
+    <Compile Include="Controllers\ElevatorProducersController.cs" />
+    <Compile Include="Controllers\ElevatorsController.cs" />
+    <Compile Include="Controllers\ElevatorSuspensionTypesController.cs" />
+    <Compile Include="Controllers\ElevatorTypesController.cs" />
+    <Compile Include="Controllers\ElevatorViewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationCitiesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MaterialsController.cs" />
+    <Compile Include="Controllers\MetricsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\ServiceBoardsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,11 +213,24 @@
     <Compile Include="Migrations\201607121901231_Dictionaries.Designer.cs">
       <DependentUpon>201607121901231_Dictionaries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607121950443_AAA.cs" />
+    <Compile Include="Migrations\201607121950443_AAA.Designer.cs">
+      <DependentUpon>201607121950443_AAA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607191825276_ABC.cs" />
+    <Compile Include="Migrations\201607191825276_ABC.Designer.cs">
+      <DependentUpon>201607191825276_ABC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607191837482_DEF.cs" />
+    <Compile Include="Migrations\201607191837482_DEF.Designer.cs">
+      <DependentUpon>201607191837482_DEF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AbSQLContext.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EE\Dictionary\AdditionExpend.cs" />
     <Compile Include="Models\EE\Dictionary\ClientsBank.cs" />
+    <Compile Include="Models\EE\Dictionary\Elevator.cs" />
     <Compile Include="Models\EE\Dictionary\ElevatorCapacity.cs" />
     <Compile Include="Models\EE\Dictionary\ElevatorController.cs" />
     <Compile Include="Models\EE\Dictionary\ElevatorDrivePower.cs" />
@@ -221,6 +247,7 @@
     <Compile Include="Models\EE\Dictionary\MechanicStatus.cs" />
     <Compile Include="Models\EE\Dictionary\Metric.cs" />
     <Compile Include="Models\EE\Dictionary\People.cs" />
+    <Compile Include="Models\EE\Operational\ServiceBoard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,7 +274,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -281,16 +310,86 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ElevatorCapacities\Create.cshtml" />
+    <Content Include="Views\ElevatorCapacities\Delete.cshtml" />
+    <Content Include="Views\ElevatorCapacities\Details.cshtml" />
+    <Content Include="Views\ElevatorCapacities\Edit.cshtml" />
+    <Content Include="Views\ElevatorCapacities\Index.cshtml" />
+    <Content Include="Views\ElevatorControllers\Create.cshtml" />
+    <Content Include="Views\ElevatorControllers\Delete.cshtml" />
+    <Content Include="Views\ElevatorControllers\Details.cshtml" />
+    <Content Include="Views\ElevatorControllers\Edit.cshtml" />
+    <Content Include="Views\ElevatorControllers\Index.cshtml" />
+    <Content Include="Views\ElevatorDriveTypes\Create.cshtml" />
+    <Content Include="Views\ElevatorDriveTypes\Delete.cshtml" />
+    <Content Include="Views\ElevatorDriveTypes\Details.cshtml" />
+    <Content Include="Views\ElevatorDriveTypes\Edit.cshtml" />
+    <Content Include="Views\ElevatorDriveTypes\Index.cshtml" />
+    <Content Include="Views\ElevatorNowStatus\Create.cshtml" />
+    <Content Include="Views\ElevatorNowStatus\Delete.cshtml" />
+    <Content Include="Views\ElevatorNowStatus\Details.cshtml" />
+    <Content Include="Views\ElevatorNowStatus\Edit.cshtml" />
+    <Content Include="Views\ElevatorNowStatus\Index.cshtml" />
+    <Content Include="Views\ElevatorViews\Create.cshtml" />
+    <Content Include="Views\ElevatorViews\Delete.cshtml" />
+    <Content Include="Views\ElevatorViews\Details.cshtml" />
+    <Content Include="Views\ElevatorViews\Edit.cshtml" />
+    <Content Include="Views\ElevatorViews\Index.cshtml" />
+    <Content Include="Views\ElevatorProducers\Create.cshtml" />
+    <Content Include="Views\ElevatorProducers\Delete.cshtml" />
+    <Content Include="Views\ElevatorProducers\Details.cshtml" />
+    <Content Include="Views\ElevatorProducers\Edit.cshtml" />
+    <Content Include="Views\ElevatorProducers\Index.cshtml" />
+    <Content Include="Views\ElevatorSuspensionTypes\Create.cshtml" />
+    <Content Include="Views\ElevatorSuspensionTypes\Delete.cshtml" />
+    <Content Include="Views\ElevatorSuspensionTypes\Details.cshtml" />
+    <Content Include="Views\ElevatorSuspensionTypes\Edit.cshtml" />
+    <Content Include="Views\ElevatorSuspensionTypes\Index.cshtml" />
+    <Content Include="Views\ElevatorTypes\Create.cshtml" />
+    <Content Include="Views\ElevatorTypes\Delete.cshtml" />
+    <Content Include="Views\ElevatorTypes\Details.cshtml" />
+    <Content Include="Views\ElevatorTypes\Edit.cshtml" />
+    <Content Include="Views\ElevatorTypes\Index.cshtml" />
+    <Content Include="Views\ClientsBanks\Create.cshtml" />
+    <Content Include="Views\ClientsBanks\Delete.cshtml" />
+    <Content Include="Views\ClientsBanks\Details.cshtml" />
+    <Content Include="Views\ClientsBanks\Edit.cshtml" />
+    <Content Include="Views\ClientsBanks\Index.cshtml" />
+    <Content Include="Views\ElevatorDrivePowers\Create.cshtml" />
+    <Content Include="Views\ElevatorDrivePowers\Delete.cshtml" />
+    <Content Include="Views\ElevatorDrivePowers\Details.cshtml" />
+    <Content Include="Views\ElevatorDrivePowers\Edit.cshtml" />
+    <Content Include="Views\ElevatorDrivePowers\Index.cshtml" />
+    <Content Include="Views\Materials\Create.cshtml" />
+    <Content Include="Views\Materials\Delete.cshtml" />
+    <Content Include="Views\Materials\Details.cshtml" />
+    <Content Include="Views\Materials\Edit.cshtml" />
+    <Content Include="Views\Materials\Index.cshtml" />
+    <Content Include="Views\LocationCities\Create.cshtml" />
+    <Content Include="Views\LocationCities\Delete.cshtml" />
+    <Content Include="Views\LocationCities\Details.cshtml" />
+    <Content Include="Views\LocationCities\Edit.cshtml" />
+    <Content Include="Views\LocationCities\Index.cshtml" />
+    <Content Include="Views\Metrics\Create.cshtml" />
+    <Content Include="Views\Metrics\Delete.cshtml" />
+    <Content Include="Views\Metrics\Details.cshtml" />
+    <Content Include="Views\Metrics\Edit.cshtml" />
+    <Content Include="Views\Metrics\Index.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\People\Delete.cshtml" />
     <Content Include="Views\People\Details.cshtml" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
-    <Content Include="Views\AdditionExpends\Create.cshtml" />
-    <Content Include="Views\AdditionExpends\Delete.cshtml" />
-    <Content Include="Views\AdditionExpends\Details.cshtml" />
-    <Content Include="Views\AdditionExpends\Edit.cshtml" />
-    <Content Include="Views\AdditionExpends\Index.cshtml" />
+    <Content Include="Views\Elevators\Create.cshtml" />
+    <Content Include="Views\Elevators\Delete.cshtml" />
+    <Content Include="Views\Elevators\Details.cshtml" />
+    <Content Include="Views\Elevators\Edit.cshtml" />
+    <Content Include="Views\Elevators\Index.cshtml" />
+    <Content Include="Views\ServiceBoards\Create.cshtml" />
+    <Content Include="Views\ServiceBoards\Delete.cshtml" />
+    <Content Include="Views\ServiceBoards\Details.cshtml" />
+    <Content Include="Views\ServiceBoards\Edit.cshtml" />
+    <Content Include="Views\ServiceBoards\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +420,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607121901231_Dictionaries.resx">
       <DependentUpon>201607121901231_Dictionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121950443_AAA.resx">
+      <DependentUpon>201607121950443_AAA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607191825276_ABC.resx">
+      <DependentUpon>201607191825276_ABC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607191837482_DEF.resx">
+      <DependentUpon>201607191837482_DEF.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

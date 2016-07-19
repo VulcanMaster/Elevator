@@ -11,107 +11,107 @@ using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class ElevatorProducersController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: People
+        // GET: ElevatorProducers
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.ElevatorProducer.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: ElevatorProducers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorProducer elevatorProducer = db.ElevatorProducer.Find(id);
+            if (elevatorProducer == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorProducer);
         }
 
-        // GET: People/Create
+        // GET: ElevatorProducers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
+        // POST: ElevatorProducers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "ElevatorProducerId,ElevatorProducerName")] ElevatorProducer elevatorProducer)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.ElevatorProducer.Add(elevatorProducer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            return View(elevatorProducer);
         }
 
-        // GET: People/Edit/5
+        // GET: ElevatorProducers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorProducer elevatorProducer = db.ElevatorProducer.Find(id);
+            if (elevatorProducer == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorProducer);
         }
 
-        // POST: People/Edit/5
+        // POST: ElevatorProducers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "ElevatorProducerId,ElevatorProducerName")] ElevatorProducer elevatorProducer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(elevatorProducer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            return View(elevatorProducer);
         }
 
-        // GET: People/Delete/5
+        // GET: ElevatorProducers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorProducer elevatorProducer = db.ElevatorProducer.Find(id);
+            if (elevatorProducer == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorProducer);
         }
 
-        // POST: People/Delete/5
+        // POST: ElevatorProducers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            ElevatorProducer elevatorProducer = db.ElevatorProducer.Find(id);
+            db.ElevatorProducer.Remove(elevatorProducer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

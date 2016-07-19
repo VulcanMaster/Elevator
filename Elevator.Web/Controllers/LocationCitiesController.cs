@@ -11,107 +11,107 @@ using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class LocationCitiesController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: People
+        // GET: LocationCities
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.LocationCity.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: LocationCities/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            LocationCity locationCity = db.LocationCity.Find(id);
+            if (locationCity == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(locationCity);
         }
 
-        // GET: People/Create
+        // GET: LocationCities/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
+        // POST: LocationCities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "LocationCityId,LocationCityName")] LocationCity locationCity)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.LocationCity.Add(locationCity);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            return View(locationCity);
         }
 
-        // GET: People/Edit/5
+        // GET: LocationCities/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            LocationCity locationCity = db.LocationCity.Find(id);
+            if (locationCity == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(locationCity);
         }
 
-        // POST: People/Edit/5
+        // POST: LocationCities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "LocationCityId,LocationCityName")] LocationCity locationCity)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(locationCity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            return View(locationCity);
         }
 
-        // GET: People/Delete/5
+        // GET: LocationCities/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            LocationCity locationCity = db.LocationCity.Find(id);
+            if (locationCity == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(locationCity);
         }
 
-        // POST: People/Delete/5
+        // POST: LocationCities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            LocationCity locationCity = db.LocationCity.Find(id);
+            db.LocationCity.Remove(locationCity);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

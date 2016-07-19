@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Elevator.Web.Models.EE.Dictionary.ElevatorDrivePower>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ElevatorDrivePowerValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ElevatorDrivePowerValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ElevatorDrivePowerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ElevatorDrivePowerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ElevatorDrivePowerId })
+        </td>
+    </tr>
+}
+
+</table>

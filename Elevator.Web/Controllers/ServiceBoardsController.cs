@@ -7,111 +7,116 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Elevator.Web.Models;
-using Elevator.Web.Models.EE.Dictionary;
+using Elevator.Web.Models.EE.Operational;
 
 namespace Elevator.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class ServiceBoardsController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: People
+        // GET: ServiceBoards
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            var serviceBoard = db.ServiceBoard.Include(s => s.Elevator);
+            return View(serviceBoard.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: ServiceBoards/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ServiceBoard serviceBoard = db.ServiceBoard.Find(id);
+            if (serviceBoard == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(serviceBoard);
         }
 
-        // GET: People/Create
+        // GET: ServiceBoards/Create
         public ActionResult Create()
         {
+            ViewBag.ElevatorsId = new SelectList(db.Elevator, "ElevatorsId", "Name");
             return View();
         }
 
-        // POST: People/Create
+        // POST: ServiceBoards/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "ServiceBoardId,IncidentDate,ElevatorsId")] ServiceBoard serviceBoard)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.ServiceBoard.Add(serviceBoard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            ViewBag.ElevatorsId = new SelectList(db.Elevator, "ElevatorsId", "Name", serviceBoard.ElevatorsId);
+            return View(serviceBoard);
         }
 
-        // GET: People/Edit/5
+        // GET: ServiceBoards/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ServiceBoard serviceBoard = db.ServiceBoard.Find(id);
+            if (serviceBoard == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            ViewBag.ElevatorsId = new SelectList(db.Elevator, "ElevatorsId", "Name", serviceBoard.ElevatorsId);
+            return View(serviceBoard);
         }
 
-        // POST: People/Edit/5
+        // POST: ServiceBoards/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "ServiceBoardId,IncidentDate,ElevatorsId")] ServiceBoard serviceBoard)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(serviceBoard).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            ViewBag.ElevatorsId = new SelectList(db.Elevator, "ElevatorsId", "Name", serviceBoard.ElevatorsId);
+            return View(serviceBoard);
         }
 
-        // GET: People/Delete/5
+        // GET: ServiceBoards/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ServiceBoard serviceBoard = db.ServiceBoard.Find(id);
+            if (serviceBoard == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(serviceBoard);
         }
 
-        // POST: People/Delete/5
+        // POST: ServiceBoards/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            ServiceBoard serviceBoard = db.ServiceBoard.Find(id);
+            db.ServiceBoard.Remove(serviceBoard);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -11,107 +11,107 @@ using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class MetricsController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: People
+        // GET: Metrics
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.Metric.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: Metrics/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            Metric metric = db.Metric.Find(id);
+            if (metric == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(metric);
         }
 
-        // GET: People/Create
+        // GET: Metrics/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
+        // POST: Metrics/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "MetricId,MetricFullName,MetricShortName")] Metric metric)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.Metric.Add(metric);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            return View(metric);
         }
 
-        // GET: People/Edit/5
+        // GET: Metrics/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            Metric metric = db.Metric.Find(id);
+            if (metric == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(metric);
         }
 
-        // POST: People/Edit/5
+        // POST: Metrics/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "MetricId,MetricFullName,MetricShortName")] Metric metric)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(metric).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            return View(metric);
         }
 
-        // GET: People/Delete/5
+        // GET: Metrics/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            Metric metric = db.Metric.Find(id);
+            if (metric == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(metric);
         }
 
-        // POST: People/Delete/5
+        // POST: Metrics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            Metric metric = db.Metric.Find(id);
+            db.Metric.Remove(metric);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -11,107 +11,107 @@ using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class ElevatorNowStatusController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: People
+        // GET: ElevatorNowStatus
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.ElevatorNowStatus.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: ElevatorNowStatus/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorNowStatus elevatorNowStatus = db.ElevatorNowStatus.Find(id);
+            if (elevatorNowStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorNowStatus);
         }
 
-        // GET: People/Create
+        // GET: ElevatorNowStatus/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
+        // POST: ElevatorNowStatus/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "ElevatorNowStatusId,ElevatorNowStatusName")] ElevatorNowStatus elevatorNowStatus)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.ElevatorNowStatus.Add(elevatorNowStatus);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            return View(elevatorNowStatus);
         }
 
-        // GET: People/Edit/5
+        // GET: ElevatorNowStatus/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorNowStatus elevatorNowStatus = db.ElevatorNowStatus.Find(id);
+            if (elevatorNowStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorNowStatus);
         }
 
-        // POST: People/Edit/5
+        // POST: ElevatorNowStatus/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "ElevatorNowStatusId,ElevatorNowStatusName")] ElevatorNowStatus elevatorNowStatus)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(elevatorNowStatus).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            return View(elevatorNowStatus);
         }
 
-        // GET: People/Delete/5
+        // GET: ElevatorNowStatus/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorNowStatus elevatorNowStatus = db.ElevatorNowStatus.Find(id);
+            if (elevatorNowStatus == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorNowStatus);
         }
 
-        // POST: People/Delete/5
+        // POST: ElevatorNowStatus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            ElevatorNowStatus elevatorNowStatus = db.ElevatorNowStatus.Find(id);
+            db.ElevatorNowStatus.Remove(elevatorNowStatus);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

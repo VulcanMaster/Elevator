@@ -11,107 +11,107 @@ using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class AdditionExpendsController : Controller
+    public class ElevatorDrivePowersController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: AdditionExpends
+        // GET: ElevatorDrivePowers
         public ActionResult Index()
         {
-            return View(db.AdditionExpend.ToList());
+            return View(db.ElevatorDrivePower.ToList());
         }
 
-        // GET: AdditionExpends/Details/5
+        // GET: ElevatorDrivePowers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AdditionExpend additionExpend = db.AdditionExpend.Find(id);
-            if (additionExpend == null)
+            ElevatorDrivePower elevatorDrivePower = db.ElevatorDrivePower.Find(id);
+            if (elevatorDrivePower == null)
             {
                 return HttpNotFound();
             }
-            return View(additionExpend);
+            return View(elevatorDrivePower);
         }
 
-        // GET: AdditionExpends/Create
+        // GET: ElevatorDrivePowers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AdditionExpends/Create
+        // POST: ElevatorDrivePowers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdditionExpendId,AddExpName,AddExpBasePrice")] AdditionExpend additionExpend)
+        public ActionResult Create([Bind(Include = "ElevatorDrivePowerId,ElevatorDrivePowerValue")] ElevatorDrivePower elevatorDrivePower)
         {
             if (ModelState.IsValid)
             {
-                db.AdditionExpend.Add(additionExpend);
+                db.ElevatorDrivePower.Add(elevatorDrivePower);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(additionExpend);
+            return View(elevatorDrivePower);
         }
 
-        // GET: AdditionExpends/Edit/5
+        // GET: ElevatorDrivePowers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AdditionExpend additionExpend = db.AdditionExpend.Find(id);
-            if (additionExpend == null)
+            ElevatorDrivePower elevatorDrivePower = db.ElevatorDrivePower.Find(id);
+            if (elevatorDrivePower == null)
             {
                 return HttpNotFound();
             }
-            return View(additionExpend);
+            return View(elevatorDrivePower);
         }
 
-        // POST: AdditionExpends/Edit/5
+        // POST: ElevatorDrivePowers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdditionExpendId,AddExpName,AddExpBasePrice")] AdditionExpend additionExpend)
+        public ActionResult Edit([Bind(Include = "ElevatorDrivePowerId,ElevatorDrivePowerValue")] ElevatorDrivePower elevatorDrivePower)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(additionExpend).State = EntityState.Modified;
+                db.Entry(elevatorDrivePower).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(additionExpend);
+            return View(elevatorDrivePower);
         }
 
-        // GET: AdditionExpends/Delete/5
+        // GET: ElevatorDrivePowers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AdditionExpend additionExpend = db.AdditionExpend.Find(id);
-            if (additionExpend == null)
+            ElevatorDrivePower elevatorDrivePower = db.ElevatorDrivePower.Find(id);
+            if (elevatorDrivePower == null)
             {
                 return HttpNotFound();
             }
-            return View(additionExpend);
+            return View(elevatorDrivePower);
         }
 
-        // POST: AdditionExpends/Delete/5
+        // POST: ElevatorDrivePowers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AdditionExpend additionExpend = db.AdditionExpend.Find(id);
-            db.AdditionExpend.Remove(additionExpend);
+            ElevatorDrivePower elevatorDrivePower = db.ElevatorDrivePower.Find(id);
+            db.ElevatorDrivePower.Remove(elevatorDrivePower);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

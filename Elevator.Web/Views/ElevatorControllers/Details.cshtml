@@ -1,0 +1,26 @@
+﻿@model Elevator.Web.Models.EE.Dictionary.ElevatorController
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ElevatorController</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ElevatorControllerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ElevatorControllerName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ElevatorControllerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

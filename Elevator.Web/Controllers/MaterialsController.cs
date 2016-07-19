@@ -11,107 +11,107 @@ using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class PeopleController : Controller
+    public class MaterialsController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: People
+        // GET: Materials
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.Material.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: Materials/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            Material material = db.Material.Find(id);
+            if (material == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(material);
         }
 
-        // GET: People/Create
+        // GET: Materials/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
+        // POST: Materials/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "MaterialId,MaterialName,MaterialBasePrice")] Material material)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.Material.Add(material);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            return View(material);
         }
 
-        // GET: People/Edit/5
+        // GET: Materials/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            Material material = db.Material.Find(id);
+            if (material == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(material);
         }
 
-        // POST: People/Edit/5
+        // POST: Materials/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "MaterialId,MaterialName,MaterialBasePrice")] Material material)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(material).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            return View(material);
         }
 
-        // GET: People/Delete/5
+        // GET: Materials/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            Material material = db.Material.Find(id);
+            if (material == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(material);
         }
 
-        // POST: People/Delete/5
+        // POST: Materials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            Material material = db.Material.Find(id);
+            db.Material.Remove(material);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

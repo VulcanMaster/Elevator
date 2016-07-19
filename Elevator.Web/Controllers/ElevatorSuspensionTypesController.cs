@@ -7,112 +7,111 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Elevator.Web.Models;
-using Elevator.Web.Models.EE;
 using Elevator.Web.Models.EE.Dictionary;
 
 namespace Elevator.Web.Controllers
 {
-    public class PersonController : Controller
+    public class ElevatorSuspensionTypesController : Controller
     {
         private AbSqlContext db = new AbSqlContext();
 
-        // GET: Person
+        // GET: ElevatorSuspensionTypes
         public ActionResult Index()
         {
-            return View(db.People.ToList());
+            return View(db.ElevatorSuspensionType.ToList());
         }
 
-        // GET: Person/Details/5
+        // GET: ElevatorSuspensionTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorSuspensionType elevatorSuspensionType = db.ElevatorSuspensionType.Find(id);
+            if (elevatorSuspensionType == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorSuspensionType);
         }
 
-        // GET: Person/Create
+        // GET: ElevatorSuspensionTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Person/Create
+        // POST: ElevatorSuspensionTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Create([Bind(Include = "ElevatorSuspensionTypeId,ElevatorSuspensionTypeName")] ElevatorSuspensionType elevatorSuspensionType)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(people);
+                db.ElevatorSuspensionType.Add(elevatorSuspensionType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(people);
+            return View(elevatorSuspensionType);
         }
 
-        // GET: Person/Edit/5
+        // GET: ElevatorSuspensionTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorSuspensionType elevatorSuspensionType = db.ElevatorSuspensionType.Find(id);
+            if (elevatorSuspensionType == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorSuspensionType);
         }
 
-        // POST: Person/Edit/5
+        // POST: ElevatorSuspensionTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,FullName,Area,PersCode,ContractNum,Mobile,Phone,ElectricityAccessExpiryDate,ElevatorAccessExpiryDate,Status")] People people)
+        public ActionResult Edit([Bind(Include = "ElevatorSuspensionTypeId,ElevatorSuspensionTypeName")] ElevatorSuspensionType elevatorSuspensionType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(people).State = EntityState.Modified;
+                db.Entry(elevatorSuspensionType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(people);
+            return View(elevatorSuspensionType);
         }
 
-        // GET: Person/Delete/5
+        // GET: ElevatorSuspensionTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            People people = db.People.Find(id);
-            if (people == null)
+            ElevatorSuspensionType elevatorSuspensionType = db.ElevatorSuspensionType.Find(id);
+            if (elevatorSuspensionType == null)
             {
                 return HttpNotFound();
             }
-            return View(people);
+            return View(elevatorSuspensionType);
         }
 
-        // POST: Person/Delete/5
+        // POST: ElevatorSuspensionTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            People people = db.People.Find(id);
-            db.People.Remove(people);
+            ElevatorSuspensionType elevatorSuspensionType = db.ElevatorSuspensionType.Find(id);
+            db.ElevatorSuspensionType.Remove(elevatorSuspensionType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
